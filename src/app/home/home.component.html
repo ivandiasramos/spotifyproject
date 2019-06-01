@@ -3,27 +3,29 @@
     <div class="h-spotify-logo-box">
       <img src="../../assets/images/icons/spotify-green-logo.svg" class="h-spotify-logo" alt="">
     </div>
-    <div class="row justify-content-center">
-      <div class="col-sm-6">
-        <app-input-search class="mb-2" (typedSearch)="getTypedSearch($event)">
-          <ng-container *ngIf="showSearchResult">
-            <ng-container *ngFor="let spotifyArtist of spotifyArtists">
-              <ng-container *ngIf="spotifyArtist.images[2] && spotifyArtist.images[2].url">
-                <app-search-content
-                  [id]="spotifyArtist.id"
-                  [srcImage]="spotifyArtist.images[2].url"
-                  [title]="spotifyArtist.name"
-                  (getClickedArtist)="getClickedArtist($event)">
-                </app-search-content>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-6">
+          <app-input-search class="mb-2" (typedSearch)="getTypedSearch($event)">
+            <ng-container *ngIf="showSearchResult">
+              <ng-container *ngFor="let spotifyArtist of spotifyArtists">
+                <ng-container *ngIf="spotifyArtist.images[2] && spotifyArtist.images[2].url">
+                  <app-search-content
+                    [id]="spotifyArtist.id"
+                    [srcImage]="spotifyArtist.images[2].url"
+                    [title]="spotifyArtist.name"
+                    (getClickedArtist)="getClickedArtist($event)">
+                  </app-search-content>
+                </ng-container>
               </ng-container>
             </ng-container>
-          </ng-container>
-        </app-input-search>
-        <span class="small h-type-text gray-text">Search for your favorite artist!</span>
+          </app-input-search>
+          <span class="small h-type-text gray-text">Search for your favorite artist!</span>
+        </div>
       </div>
     </div>
   </header>
-  <div class="h-content mt-5 container" *ngIf="artistIdClicked">
-    <app-artist-content [id]="artistIdClicked"></app-artist-content>
+  <div class="h-content mt-5 container" *ngIf="spotifyArtist">
+    <app-artist-content [spotifyArtist]="spotifyArtist"></app-artist-content>
   </div>
 </main>
