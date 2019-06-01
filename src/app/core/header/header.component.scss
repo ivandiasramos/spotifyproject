@@ -1,0 +1,11 @@
+@import '../../../assets/scss/component.scss';
+
+:host {
+  display: block;
+}
+
+.main-header {
+  height: 3rem;
+  background-color: $mountain-meadow;
+  border-bottom: 1px solid lighten($cod-gray, 5%);
+}
