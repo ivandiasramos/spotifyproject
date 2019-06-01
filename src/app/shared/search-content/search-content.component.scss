@@ -1,0 +1,22 @@
+@import '../../../assets/scss/component.scss';
+
+$sc-spacing: .6rem;
+
+.sc-container {
+  cursor: pointer;
+  padding: $sc-spacing;
+  animation: fadeIn 1.6s forwards 0s linear;
+  transition: $base-transition;
+
+  &:hover {
+    background-color: darken($white, 6%);
+  }
+}
+
+.sc-img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  object-position: 50% 50%;
+  margin-right: $sc-spacing;
+}
