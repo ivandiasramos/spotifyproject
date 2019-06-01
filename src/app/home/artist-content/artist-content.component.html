@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-sm-6">
+    <img
+      [src]="spotifyArtist.images[0].url"
+      [alt]="spotifyArtist.name"
+      class="ac-img img-fluid rounded">
+  </div>
+  <div class="col-sm-6">
+    <h1>{{ spotifyArtist.name }}</h1>
+    <h4 class="font-weight-normal">
+      Total followers: <span class="badge badge-pill badge-light">{{ spotifyArtist.followers.total }}</span>
+    </h4>
+    <a [href]="spotifyArtist.external_urls.spotify">go to Spotify Artist Page</a>
+  </div>
+</div>
