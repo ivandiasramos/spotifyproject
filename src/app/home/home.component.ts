@@ -26,8 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.authService.getToken().subscribe((resp: SpotifyAuthResponse) =>
-      this.authService.resp = resp);
+    this.authService.getToken().subscribe();
   }
 
   public getTypedSearch(typed: string): void {
