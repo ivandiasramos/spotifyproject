@@ -1,3 +1,5 @@
+import { SpotifyAuthResponse } from './../shared/interfaces/spotify/artists/spotify.interfaces';
+import { AuthService } from './../core/services/auth/auth.service';
 import { SpotifyService } from './../core/services/spotify/spotify.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
@@ -15,12 +17,18 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public spotifyArtists: Array<SpotifyArtist>;
 
-  public artistIdClicked: string;
+  public spotifyArtist: SpotifyArtist;
   public showSearchResult: boolean;
 
-  constructor(private spotifyService: SpotifyService) { }
+  constructor(
+    private spotifyService: SpotifyService,
+    private authService: AuthService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getToken().subscribe((resp: SpotifyAuthResponse) =>
+      this.authService.resp = resp);
+  }
 
   public getTypedSearch(typed: string): void {
     this.showSearchResult = true;
@@ -40,7 +48,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   public getClickedArtist(artistId: string) {
-    this.artistIdClicked = artistId;
+    this.spotifyService.getArtist(artistId)
+      .pipe(
+        takeUntil(this.unsub$),
+      ).subscribe((artist: SpotifyArtist) => {
+        this.spotifyArtist = artist;
+      });
+
     this.showSearchResult = false;
   }
 
