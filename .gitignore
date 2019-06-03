@@ -4,7 +4,8 @@
 /tmp
 /out-tsc
 /dist
-/cypress
+/cypress/videos
+/cypress/screenshots
 
 # dependencies
 /node_modules
