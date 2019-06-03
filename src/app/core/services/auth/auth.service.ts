@@ -14,7 +14,13 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public getToken(): Observable<any> {
-    return this.httpClient.get('http://localhost:3000')
+    const body = {
+      client_id: '974385e59bef428bb45df3c5836ef0d5',
+      client_secret: '7aad5c9ef159415fb92a18d98afec9a9',
+      grant_type: 'client_credentials',
+    };
+
+    return this.httpClient.post('/api/token', body)
       .pipe(
         tap((resp: SpotifyAuthResponse) => this.token = resp.token_type + ' ' + resp.access_token)
       );
