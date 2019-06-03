@@ -1,6 +1,6 @@
 # Spotify Project
 
-This project is a simple test with Spotify api that consists with searching some musican artist and a search response to screen
+This project is a simple test with Spotify API that consists with searching some music artist and send the search response to the view
 
 ## Get started
 
