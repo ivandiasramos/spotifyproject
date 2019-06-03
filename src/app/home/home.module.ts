@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { InputSearchModule } from '../shared/input-search/input-search.module';
 import { ArtistContentComponent } from './artist-content/artist-content.component';
+import { SpotifyService } from '../core/services/spotify/spotify.service';
 
 @NgModule({
   declarations: [HomeComponent, ArtistContentComponent],
@@ -13,6 +14,7 @@ import { ArtistContentComponent } from './artist-content/artist-content.componen
     InputSearchModule,
     HomeRoutingModule,
     SearchContentModule,
-  ]
+  ],
+  providers: [SpotifyService]
 })
 export class HomeModule { }
